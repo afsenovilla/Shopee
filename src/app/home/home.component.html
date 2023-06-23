@@ -1,0 +1,38 @@
+<app-search></app-search>
+<app-tags></app-tags>
+<app-not-found [visible]="!clothes || clothes.length <= 0" resetLinkText="Buscar otra cosa" notFoundMessage="Eso aún no lo tenemos..."></app-not-found>
+<ul>
+    <li *ngFor="let apparel of clothes">
+        <a routerLink="/clothes/{{apparel.id}}">
+            <img src="{{apparel.imageUrl}}" alt="">
+            <div class="content">
+                <div class="name">
+                    {{apparel.name}}
+                </div>
+                <!-- <div class="description">
+                    {{apparel.description}}
+                </div> -->
+                <span class="favorite {{apparel.favorite?'':'not'}}">
+                    ♥
+                </span>
+                <div class="product-item-footer">
+                        <div class="sizes">
+                            <span *ngFor="let size of apparel.sizes">
+                                {{size}}
+                            </span>
+                        </div>
+                        <div class="tags">
+                            <span>
+                                {{apparel.tags}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="price">
+                        <span>
+                            {{apparel.price}}€
+                        </span>
+                    </div>
+            </div>
+        </a>
+    </li>
+</ul>

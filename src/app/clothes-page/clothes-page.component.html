@@ -1,0 +1,31 @@
+<app-not-found [visible]="!clothes" notFoundMessage="¡De eso no tenemos!" resetLinkText="Volver a la página de inicio" ></app-not-found>
+
+<div *ngIf="clothes" class="container">
+    <img [src]="clothes.imageUrl" [alt]="clothes.name" />
+
+<div class="details">
+    <div class="header">
+        <span class="name">
+            {{clothes.name}}
+        </span>
+        <span class="favorite{{clothes.favorite?'':'not'}}">
+            ♥
+        </span>
+    </div>
+        <div class="size">
+            <span *ngFor="let size of clothes.sizes">
+                {{size}}
+            </span>
+        </div>
+        <div class="tags">
+            <app-tags [clothesPageTags]="clothes.tags" justifyContent="start"></app-tags>
+        </div>
+
+        <div class="price">
+            <span>{{clothes.price}}€</span>
+        </div>
+
+        <button (click)="addToCart()">Añadir al carrito</button>
+</div>
+
+</div>
